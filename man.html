@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>AaryaVerse ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+    rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --pink: #ff4d94;
+      --pink-soft: #ff8fc0;
+      --pink-glow: #ff2d7e;
+      --cream: #f7e3d2;
+      --dark: #1a0511;
+      --dark2: #2a0a1e;
+    }
+
+    /* 1. Body ke liye background set karein */
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      /* Yahan apni image ka path daalein */
+      background: url('bg5.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #ffe6f2;
+      font-family: 'Cormorant Garamond', serif;
+      overflow-x: hidden;
+    }
+
+    /* ============ INTRO / LETS GO ============ */
+    #intro {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #120309 url("bg5.png") center/cover no-repeat;
+      transition: opacity 0.8s ease;
+    }
+
+    #intro.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .letsgo-btn {
+      font-family: 'Great Vibes', cursive;
+      font-size: 40px;
+      color: #fff;
+      background: rgba(255, 45, 126, 0.18);
+      border: 2px solid var(--pink);
+      border-radius: 50px;
+      padding: 14px 54px;
+      cursor: pointer;
+      letter-spacing: 1px;
+      text-shadow: 0 0 14px var(--pink-glow), 0 0 30px var(--pink-glow);
+      box-shadow: 0 0 20px var(--pink-glow), 0 0 45px rgba(255, 45, 126, 0.6), inset 0 0 16px rgba(255, 45, 126, 0.4);
+      backdrop-filter: blur(3px);
+      animation: pulseGlow 2s ease-in-out infinite;
+      transition: transform 0.2s ease;
+    }
+
+    .letsgo-btn:active {
+      transform: scale(0.95);
+    }
+
+    @keyframes pulseGlow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 20px var(--pink-glow), 0 0 45px rgba(255, 45, 126, 0.6), inset 0 0 16px rgba(255, 45, 126, 0.4);
+      }
+
+      50% {
+        box-shadow: 0 0 30px var(--pink-glow), 0 0 70px rgba(255, 45, 126, 0.9), inset 0 0 22px rgba(255, 45, 126, 0.6);
+      }
+    }
+
+    /* ============ APP ============ */
+    #app {
+      opacity: 0;
+      transition: opacity 1s ease;
+      display: flex;
+      justify-content: center;
+      padding: 8px;
+    }
+
+    #app.show {
+      opacity: 1;
+    }
+
+    .poster::before,
+    .poster::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: radial-gradient(ellipse at center, rgba(255, 45, 126, 0.35), transparent 70%);
+      pointer-events: none;
+    }
+
+    .poster::before {
+      top: -40px;
+    }
+
+    .poster::after {
+      bottom: -40px;
+    }
+
+    .music-toggle {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 20;
+      background: rgba(255, 45, 126, 0.2);
+      border: 1px solid var(--pink);
+      color: #fff;
+      border-radius: 30px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-family: 'Cormorant Garamond', serif;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(255, 45, 126, 0.5);
+    }
+
+    .crown {
+      text-align: center;
+      font-size: 22px;
+      margin-bottom: 2px;
+    }
+    /* Floating Flowers */
+        .petal { position: absolute; top: -10%; font-size: 24px; animation: fall linear infinite; z-index: 1; pointer-events: none; opacity: 0.8; }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+
+
+    .title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 58px;
+      text-align: center;
+      line-height: 1;
+      color: #fff;
+      text-shadow: 0 0 16px var(--pink-glow), 0 0 34px var(--pink-glow);
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--pink-soft);
+      margin-bottom: 14px;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .tagline {
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+      font-size: 17px;
+      color: #ffd9ec;
+      line-height: 1.5;
+      margin-bottom: 8px;
+      text-shadow: 0 0 10px rgba(255, 45, 126, 0.6);
+    }
+
+    .polaroids {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin: 6px 4px 16px;
+    }
+
+    .polaroid {
+      width: 58px;
+      background: #fff5fa;
+      padding: 4px 4px 10px;
+      border-radius: 3px;
+      transform: rotate(6deg);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+    }
+
+    .polaroid:first-child {
+      transform: rotate(-5deg);
+    }
+
+    .polaroid .ph {
+      width: 100%;
+      height: 58px;
+      background: linear-gradient(135deg, #ffb3d1, #ff6fa5);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7px;
+      color: #7a0033;
+      text-align: center;
+      padding: 2px;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .polaroid .cap {
+      font-family: 'Dancing Script', cursive;
+      font-size: 8px;
+      color: #a3004d;
+      text-align: center;
+      margin-top: 3px;
+    }
+
+    /* ============ ENVELOPES ============ */
+    .env-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+
+    .env-row.two {
+      padding: 0 16%;
+    }
+
+    .env-card {
+      position: relative;
+      flex: 1 1 0;
+      min-width: 0;
+      max-width: 132px;
+      border-radius: 14px;
+      padding: 10px 8px 12px;
+      background: url(bg-main.png);
+      border: 1.5px solid rgba(255, 120, 170, 0.5);
+      box-shadow: 0 0 16px rgba(255, 45, 126, 0.35);
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .env-card:active {
+      transform: scale(0.96);
+    }
+
+    .env-card:hover {
+      box-shadow: 0 0 26px rgba(255, 45, 126, 0.7);
+    }
+
+    .env-card::after {
+      content: "";
+      position: absolute;
+      top: -60%;
+      left: -80%;
+      width: 60%;
+      height: 220%;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+      transform: rotate(20deg);
+      animation: shine 3.5s ease-in-out infinite;
+    }
+
+    @keyframes shine {
+      0% {
+        left: -80%;
+      }
+
+      60%,
+      100% {
+        left: 160%;
+      }
+    }
+
+    .env-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--pink);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      margin: 0 auto 6px;
+      box-shadow: 0 0 10px var(--pink-glow);
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .env-caption {
+      font-family: 'Dancing Script', cursive;
+      font-size: 15px;
+      text-align: center;
+      color: #ffe0ee;
+      min-height: 22px;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .env-img {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      border-radius: 10px;
+      background: linear-gradient(160deg, #ffd9e6, #ffb0cf);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      box-shadow: inset 0 0 12px rgba(255, 45, 126, 0.4);
+      overflow: hidden;
+    }
+
+    .env-img::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60%;
+      background: linear-gradient(160deg, #ffe0ec, #ff9fc4);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      border-bottom: 1px solid rgba(255, 45, 126, 0.5);
+    }
+
+    .env-seal {
+      position: relative;
+      z-index: 2;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #ff6f91, #b3002d);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #ffd9e6;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .env-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 12px;
+      text-align: center;
+      color: #ffcfe6;
+      margin-top: 8px;
+      line-height: 1.2;
+      text-shadow: 0 0 8px rgba(255, 45, 126, 0.5);
+    }
+
+    .quote {
+      font-family: 'Dancing Script', cursive;
+      font-style: italic;
+      text-align: center;
+      font-size: 14px;
+      color: #ffd9ec;
+      background: rgba(255, 45, 126, 0.12);
+      border: 1px solid rgba(255, 120, 170, 0.4);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin: 8px 4px 18px;
+      line-height: 1.5;
+    }
+
+    .uni-head {
+      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: 26px;
+      color: #fff;
+      text-shadow: 0 0 12px var(--pink-glow);
+      margin-bottom: 12px;
+    }
+
+    .badges {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .badge {
+      border: 1px solid rgba(255, 120, 170, 0.5);
+      border-radius: 10px;
+      padding: 9px 3px 6px;
+      text-align: center;
+      background: rgba(255, 45, 126, 0.08);
+      box-shadow: 0 0 8px rgba(255, 45, 126, 0.25);
+    }
+
+    .badge .ic {
+      font-size: 18px;
+    }
+
+    .badge .lbl {
+      font-size: 6.5px;
+      letter-spacing: 0.5px;
+      color: #ffcbe3;
+      margin-top: 3px;
+      text-transform: uppercase;
+    }
+
+    .fav {
+      display: flex;
+      gap: 12px;
+      background: rgba(255, 45, 126, 0.1);
+      border: 1px solid rgba(255, 120, 170, 0.4);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .fav-text {
+      flex: 1;
+    }
+
+    .fav-text h3 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 26px;
+      color: #fff;
+      margin-bottom: 8px;
+      text-shadow: 0 0 10px var(--pink-glow);
+    }
+
+    .fav-text p {
+      font-size: 12.5px;
+      color: #ffd0e4;
+      line-height: 1.55;
+    }
+
+    .fav-note {
+      align-self: flex-start;
+      background: #fff5fa;
+      color: #a3004d;
+      font-family: 'Dancing Script', cursive;
+      font-size: 12px;
+      padding: 12px 10px;
+      border-radius: 3px;
+      transform: rotate(4deg);
+      max-width: 120px;
+      line-height: 1.4;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+    }
+
+    .footer {
+      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: 22px;
+      color: #fff;
+      text-shadow: 0 0 14px var(--pink-glow);
+      background: rgba(255, 45, 126, 0.14);
+      border: 1px solid var(--pink);
+      border-radius: 40px;
+      padding: 12px;
+      box-shadow: 0 0 18px rgba(255, 45, 126, 0.5);
+    }
+
+    /* ============ LETTER / DIARY MODAL ============ */
+    #modal {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      background: rgba(10, 2, 8, 0.85);
+      backdrop-filter: blur(4px);
+      padding: 14px;
+      overflow-y: auto;
+    }
+
+    #modal.open {
+      display: flex;
+    }
+
+    .diary {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      margin: auto 0;
+      background:
+        radial-gradient(ellipse at top, rgba(255, 45, 126, 0.25), transparent 60%),
+        linear-gradient(180deg, #2a0a1e 0%, #1a0511 100%);
+      border-radius: 16px;
+      padding: 16px 12px 22px;
+      box-shadow: 0 0 40px rgba(255, 45, 126, 0.5);
+      animation: pop 0.4s ease;
+    }
+
+    @keyframes pop {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .diary-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .back-btn,
+    .heart-tag {
+      background: rgba(255, 45, 126, 0.18);
+      border: 1px solid var(--pink);
+      color: #fff;
+      border-radius: 30px;
+      padding: 6px 14px;
+      font-size: 13px;
+      cursor: pointer;
+      font-family: 'Cormorant Garamond', serif;
+      box-shadow: 0 0 10px rgba(255, 45, 126, 0.4);
+    }
+
+    .diary-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--pink);
+      background: rgba(255, 45, 126, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin: 4px auto 10px;
+      box-shadow: 0 0 14px var(--pink-glow);
+    }
+
+    .diary-title {
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+      font-size: 30px;
+      color: #fff;
+      text-shadow: 0 0 12px var(--pink-glow);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .diary-heart {
+      text-align: center;
+      color: var(--pink-soft);
+      margin-bottom: 14px;
+    }
+
+    .scroll {
+      background: linear-gradient(180deg, #f3d9c4 0%, #efc9ae 100%);
+      border-radius: 8px;
+      padding: 22px 18px;
+      color: #6b3b2a;
+      box-shadow: inset 0 0 30px rgba(120, 60, 30, 0.4), 0 6px 20px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    .scroll .row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    .scroll .row .n {
+      color: #b5651d;
+      font-style: italic;
+      font-weight: 600;
+      min-width: 30px;
+    }
+
+    .scroll .dots {
+      text-align: center;
+      color: #b5651d;
+      letter-spacing: 6px;
+      margin: 8px 0 16px;
+    }
+
+    .scroll .wax {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #ff6f91, #8a0021);
+      margin: 12px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      color: #ffd9e6;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+    }
+
+    .close-letter {
+      display: block;
+      width: 100%;
+      margin-top: 16px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 22px;
+      color: #fff;
+      background: rgba(255, 45, 126, 0.14);
+      border: 1px solid var(--pink);
+      border-radius: 40px;
+      padding: 12px;
+      cursor: pointer;
+      box-shadow: 0 0 18px rgba(255, 45, 126, 0.5);
+    }
+
+    /* preview modal (top image) */
+    #preview {
+      position: fixed;
+      inset: 0;
+      z-index: 600;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(10, 2, 8, 0.92);
+      backdrop-filter: blur(6px);
+      padding: 16px;
+    }
+
+    #preview.open {
+      display: flex;
+    }
+
+    #preview img {
+      max-width: 100%;
+      max-height: 82vh;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(255, 45, 126, 0.6);
+    }
+
+    .preview-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255, 45, 126, 0.25);
+      border: 1px solid var(--pink);
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 0 14px rgba(255, 45, 126, 0.6);
+    }
+
+    /* ============ SMALL PHONES ============ */
+    @media (max-width: 380px) {
+      .title {
+        font-size: 46px;
+      }
+
+      .tagline {
+        font-size: 14px;
+      }
+
+      .subtitle {
+        font-size: 8.5px;
+        letter-spacing: 2px;
+      }
+
+      .env-title {
+        font-size: 11px;
+      }
+
+      .env-num {
+        width: 22px;
+        height: 22px;
+        font-size: 11px;
+      }
+
+      .badges {
+        gap: 4px;
+      }
+
+      .badge {
+        padding: 7px 2px 5px;
+      }
+
+      .badge .ic {
+        font-size: 15px;
+      }
+
+      .badge .lbl {
+        font-size: 6px;
+      }
+
+      .fav {
+        flex-direction: column;
+      }
+
+      .fav-note {
+        transform: rotate(0deg);
+        align-self: center;
+        max-width: 220px;
+      }
+
+      .polaroid {
+        width: 50px;
+      }
+
+      .footer {
+        font-size: 18px;
+      }
+
+      .diary-title {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- audio: apna gaana music.mp3 naam se isi folder me daal do -->
+  <audio id="bgm" src="raabta_lofi.mp3" loop preload="auto"></audio>
+
+  <!-- ===== INTRO ===== -->
+  <div id="intro">
+    <button class="letsgo-btn" id="letsGo">Let&rsquo;s Go &hearts;</button>
+  </div>
+
+  <!-- ===== APP ===== -->
+  <div id="app">
+    <div class="poster">
+      <button class="music-toggle" id="musicToggle">&#9835; Music On</button>
+
+      <div class="crown">&#128081;</div>
+      <div class="title">AaryaVerse</div>
+      <div class="subtitle">A Universe Written For The Most Beautiful Part Of My Life</div>
+
+      <!-- polaroids (click => preview) -->
+      <div class="polaroids">
+        <div class="polaroid"
+        
+          data-preview="1.png">
+          <div class="ph">Open me first</div>
+          <div class="cap">My dear</div>
+        </div>
+        <div class="polaroid"
+          data-preview="2.png">
+          <div class="ph">No... me first.</div>
+          <div class="cap">The reason I smile</div>
+        </div>
+      </div>
+
+      <div class="tagline">Some girls are written in stories.<br />Some are the reason those stories exist. &hearts;
+      </div>
+
+      <!-- ENVELOPES -->
+      <div class="env-row">
+        <div class="env-card" data-letter="0">
+          <div class="env-num">01</div>
+          
+          <div class="env-img">
+            <div class="env-seal">&hearts;</div>
+          </div>
+          <div class="env-title">100 Reasons Why You're Beautiful</div>
+        </div>
+        <div class="env-card" data-letter="1">
+          <div class="env-num">02</div>
+        
+          <div class="env-img">
+            <div class="env-seal">&hearts;</div>
+          </div>
+          <div class="env-title">Why You Are So Special</div>
+        </div>
+        <div class="env-card" data-letter="2">
+          <div class="env-num">03</div>
+         
+          <div class="env-img">
+            <div class="env-seal">&hearts;</div>
+          </div>
+          <div class="env-title">Letters Only For Your Smile</div>
+        </div>
+      </div>
+
+      <div class="env-row two">
+        <div class="env-card" data-letter="3">
+          <div class="env-num">04</div>
+         
+          <div class="env-img">
+            <div class="env-seal">&hearts;</div>
+          </div>
+          <div class="env-title">If You Ever Feel Low</div>
+        </div>
+        <div class="env-card" data-letter="4">
+          <div class="env-num">05</div>
+          
+          <div class="env-img">
+            <div class="env-seal">&hearts;</div>
+          </div>
+          <div class="env-title">A Letter From My Heart</div>
+        </div>
+      </div>
+
+      <div class="quote">If this little universe brings even the tiniest smile to your face... then it has already
+        fulfilled its purpose. &hearts;</div>
+
+      <div class="uni-head">This Universe Is</div>
+      <div class="badges">
+        <div class="badge">
+          <div class="ic">&hearts;</div>
+          <div class="lbl">For You Always</div>
+        </div>
+        <div class="badge">
+          <div class="ic">&infin;</div>
+          <div class="lbl">Forever Yours</div>
+        </div>
+        <div class="badge">
+          <div class="ic">&#10022;</div>
+          <div class="lbl">Always With You</div>
+        </div>
+        <div class="badge">
+          <div class="ic">&#9825;</div>
+          <div class="lbl">My Everything</div>
+        </div>
+        <div class="badge">
+          <div class="ic">&#9993;</div>
+          <div class="lbl">Just For You</div>
+        </div>
+        <div class="badge">
+          <div class="ic">&hearts;</div>
+          <div class="lbl">Only You</div>
+        </div>
+      </div>
+
+      <div class="fav">
+        <div class="fav-text">
+          <h3>To My Favorite Person</h3>
+          <p>You make ordinary moments feel like magic. You make my world feel beautiful just by being in it. You are
+            not just a part of my life, you are the best part. Thank you for being you, for making everything so much
+            more meaningful. I am forever grateful for you. &hearts;</p>
+        </div>
+        <div class="fav-note">You are the reason my heart believes in magic &hearts;</div>
+      </div>
+
+      <div class="footer">You are my today and all of my tomorrows &hearts;</div>
+    </div>
+  </div>
+
+  <!-- ===== LETTER / DIARY MODAL ===== -->
+  <div id="modal">
+    <div class="diary">
+      <div class="diary-top">
+        <button class="back-btn" id="backBtn">&larr; Back</button>
+        <span class="heart-tag">Made with all my heart &hearts;</span>
+      </div>
+      <div class="diary-num" id="diaryNum">01</div>
+      <div class="diary-title" id="diaryTitle"></div>
+      <div class="diary-heart">&mdash; &hearts; &mdash;</div>
+      <div class="scroll" id="diaryScroll"></div>
+      <button class="close-letter" id="closeLetter">Close Letter &hearts;</button>
+    </div>
+  </div>
+
+  <!-- ===== PREVIEW MODAL ===== -->
+  <div id="preview">
+    <button class="preview-close" id="previewClose">&times;</button>
+    <img id="previewImg" src="" alt="preview" />
+  </div>
+
+  <script>
+    // ====== LETTER DATA (yaha apne texts edit kar sakte ho) ======
+    const letters = [
+      {
+        num: "01",
+        title: "🌸 100 Reasons Why You're Amazing, Aarya 🌸",
+        rows: [
+          "🌸 Because your smile can brighten an ordinary day.",
+          "✨ Because your eyes tell beautiful stories without words.",
+          "💖 Because your kindness makes people feel comfortable.",
+          "🌷 Because you're beautifully yourself.",
+          "😊 Because your laugh is genuinely adorable.",
+          "🌙 Because your presence feels peaceful.",
+          "🌸 Because you make little moments memorable.",
+          "💕 Because your happiness is contagious.",
+          "🌼 Because your heart seems full of warmth.",
+          "🌟 Because you're naturally beautiful inside and out.",
+          "🩷 Because your smile deserves to be protected.",
+          "🌸 Because your eyes sparkle with life.",
+          "💫 Because your confidence suits you perfectly.",
+          "🌷 Because you're sweet without even trying.",
+          "🤍 Because your simplicity is beautiful.",
+          "🌺 Because you make the world look softer.",
+          "☀️ Because your positivity is refreshing.",
+          "🌸 Because your voice is comforting.",
+          "💖 Because you're one of a kind.",
+          "🌼 Because you're impossible to replace.",
+          "🌷 Because you deserve endless happiness.",
+          "✨ Because your little expressions are adorable.",
+          "💕 Because your smile feels genuine.",
+          "🌙 Because your eyes are unforgettable.",
+          "🌸 Because you're naturally elegant.",
+          "🦋 Because your kindness is beautiful.",
+          "🌼 Because you make people smile.",
+          "💖 Because your personality shines brighter than appearances.",
+          "🌷 Because you're thoughtful.",
+          "✨ Because your presence brings peace.",
+          "🌸 Because your happiness matters.",
+          "💕 Because your laugh is heartwarming.",
+          "🌺 Because you're graceful.",
+          "🌟 Because you inspire positivity.",
+          "🌷 Because you deserve every beautiful thing.",
+          "🤍 Because your heart is precious.",
+          "🌸 Because you make ordinary conversations special.",
+          "💖 Because you're genuinely caring.",
+          "🌼 Because your smile feels like sunshine.",
+          "🌙 Because you're unforgettable.",
+          "✨ Because you stay true to yourself.",
+          "🌸 Because your kindness never goes unnoticed.",
+          "💕 Because your eyes have a peaceful charm.",
+          "🌷 Because your happiness makes others happy.",
+          "🌼 Because you're wonderfully unique.",
+          "🌸 Because you spread positive vibes.",
+          "🌟 Because you deserve respect.",
+          "💖 Because your heart is beautiful.",
+          "🌷 Because you're stronger than you realize.",
+          "☁️ Because you make the day feel lighter.",
+          "🌸 Because your smile is comforting.",
+          "✨ Because your presence feels calming.",
+          "💕 Because you're thoughtful in your own way.",
+          "🌺 Because you're effortlessly lovely.",
+          "🌼 Because you're kind even in small things.",
+          "🤍 Because you're worth appreciating.",
+          "🌙 Because your eyes are full of life.",
+          "💖 Because you make beautiful memories.",
+          "🌸 Because your personality is rare.",
+          "🌷 Because you're easy to admire.",
+          "🌟 Because you're beautifully genuine.",
+          "🌼 Because you deserve endless smiles.",
+          "💕 Because your laughter is precious.",
+          "🌸 Because your energy is uplifting.",
+          "🌷 Because you're beautifully unique.",
+          "✨ Because your smile feels magical.",
+          "🌙 Because you deserve peace.",
+          "💖 Because you're easy to care about.",
+          "🌸 Because your kindness shines.",
+          "🌺 Because you make people feel welcome.",
+          "🌷 Because you're wonderfully sweet.",
+          "🌼 Because your confidence inspires.",
+          "💕 Because your heart deserves love and respect.",
+          "🌸 Because you make life a little brighter.",
+          "🌟 Because you're simply amazing.",
+          "🌷 Because your smile is unforgettable.",
+          "🌙 Because your eyes are full of warmth.",
+          "🤍 Because you're beautifully authentic.",
+          "🌼 Because you deserve every good thing.",
+          "💖 Because you're someone's reason to smile.",
+          "🌸 Because your happiness is important.",
+          "🌷 Because your kindness changes days.",
+          "✨ Because your heart is pure.",
+          "🌼 Because you're special in your own way.",
+          "💕 Because your presence is comforting.",
+          "🌙 Because your smile deserves to stay forever.",
+          "🌸 Because your dreams matter.",
+          "🌷 Because you're naturally graceful.",
+          "🌟 Because your positivity is inspiring.",
+          "💖 Because you're wonderfully beautiful.",
+          "🌼 Because your smile is priceless.",
+          "🌸 Because your eyes are mesmerizing.",
+          "🤍 Because you deserve every reason to smile.",
+          "🌷 Because your heart is kind.",
+          "💕 Because you're unforgettable.",
+          "🌙 Because your existence makes the world a little prettier.",
+          "🌸 Because you're truly wonderful.",
+          "✨ Because you're enough exactly as you are.",
+          "💖 Because you're incredibly special.",
+           "👑 Because there will always be countless more reasons than just these hundred. ❤️"
+        ],
+      
+      },
+      {
+        num: "02",
+        title: "💌 Why You're So Special, Aarya 🌸",
+        rows: [
+          "I don't really know if you realize this, but there's something about you that's genuinely different. ✨ You don't have to try hard to stand out—you just naturally do. Maybe it's your smile 😊, maybe it's your beautiful eyes 👀, or maybe it's the way you simply stay yourself. Whatever it is, it makes you unforgettable.",
+          "Your smile has this quiet magic that can brighten someone's entire day without even trying. 🌸 And your eyes... they're the kind that can say a thousand things without speaking a single word. 🤍",
+          "But the most beautiful thing about you isn't just how you look—it's who you are. 💖 The kindness in your heart, the little things you do without even realizing, and the way you make ordinary moments feel special... that's what truly makes you beautiful.",
+          "I genuinely hope you never stop smiling. 🌷 The world feels a little softer, a little brighter, and a little happier whenever you do. No matter what kind of day you're having, please remember that you're far more amazing than you probably give yourself credit for. 🌙",
+          "So if you ever forget how special you are, come back here and read this again. ❤️ Because some people are beautiful for a moment... but people like you leave a beautiful feeling behind wherever they go. ✨",
+"Keep smiling, Aarya. 🌸🤍"
+
+        ],
+    
+      },
+      {
+        num: "03",
+        title: "💌 Your Smile 😊",
+        rows: [
+          "Dear Aarya, 🌸",
+          "I don't think you realize how beautiful your smile really is.",
+          "It's not just something you wear on your face... it's something that quietly makes everything around you feel a little brighter. ✨",
+          "The funny thing is, your smile doesn't even have to try. It just happens... and somehow, it makes ordinary moments feel special.",
+          "Sometimes I wonder if you even know the little magic you carry with you. 😊",
+          "Your smile has this soft, comforting feeling that stays in someone's mind long after the moment is gone.",
+          "So, here's a tiny request... 🤍",
+          "Please don't let anything steal that beautiful smile from you.",
+          "Because the world genuinely looks a little prettier whenever you smile.",
+          "And... if I'm being honest...",
+          "Your smile is probably my favorite thing about you. 🌷❤️",
+          "Keep smiling, Aarya. It suits you more beautifully than you'll ever know. ✨;"
+
+        ],
+       
+      },
+      {
+        num: "04",
+        title: "💌 If You Ever Feel Low 🌸",
+        rows: [
+          "Dear Aarya, 🤍",
+          "If you ever feel low...",
+          "Please don't be too hard on yourself.",
+          "Bad days happen, but they don't define who you are.",
+          "You are still the same kind, beautiful, and wonderful person you were yesterday. 🌸",
+          "It's okay to feel tired.",
+          "It's okay to have difficult days.",
+          "You don't always have to be strong.",
+          "Just promise yourself one thing...",
+          "Never stop believing in the amazing person you are. ✨",
+          "There will always be brighter mornings after darker nights.",
+          "And no matter what today feels like...",
+          "You still deserve happiness.",
+          "You still deserve peace.",
+          "You still deserve to smile. 🌷",
+          "So take a deep breath...",
+          "Smile a little, even if it's a small one.",
+          "Because trust me...",
+          "Your smile makes the world a little brighter. 🤍",
+          "And if no one reminds you today...",
+          "Let this little letter do it instead.",
+          "You are enough.",
+          "You are appreciated.",
+          "You are special.",
+          "Please take care of yourself...",
+          "Because someone somewhere is always happy knowing you exist. ❤️🌸",
+"And whenever life feels a little heavy... just remember, even the brightest stars need the night to shine. ✨🌙"
+
+        ],
+      
+      },
+      {
+        num: "05",
+        title: "💌 A Letter From My Heart ❤️",
+        rows: [
+          "Dear Aarya, 🌸",
+          "I don't know if these words will ever be enough to tell you what I truly feel, but I wanted to write them anyway.",
+          "The truth is... I genuinely care about you. ❤️",
+          "Not because I expect anything in return, not because I want something from you... but because seeing you happy honestly makes me happy too.",
+          "I know life isn't perfect. Some days are beautiful, and some days can feel really heavy. But I hope that whenever those difficult days come, you never forget how precious you are.",
+          "You deserve to be appreciated.",
+          "You deserve to be respected.",
+          "And most of all... you deserve to be genuinely happy. 🌷",
+          "One thing I've always admired about you is that you don't even realize how special you are. The way you smile, the way you talk, the way you simply exist... there's something about you that quietly makes people feel comfortable.",
+          "If I could ask for just one thing, it wouldn't be anything big.",
+          "It would simply be this...",
+          "Please keep smiling. 😊",
+          "Because your smile is one of those little things that can make someone's day without you even knowing it.",
+          "And if life ever becomes difficult...",
+          "I hope you remember that someone is quietly wishing the best for you, praying for your happiness, and hoping that every dream you have comes true.",
+          "Maybe this is just a small letter...",
+          "But every single word in it comes straight from my heart.",
+          "No matter what happens...",
+          "I'll always wish for your happiness before anything else.",
+          "Take care of yourself, Aarya.",
+          "Because this world is a little more beautiful with you in it. ❤️🌸",
+"Some people become a chapter in someone's life... but you became a reason to smile without even trying.🌸🤍"
+
+
+        ],
+      
+      }
+    ];
+
+    // ====== ELEMENTS ======
+    const intro = document.getElementById('intro');
+    const app = document.getElementById('app');
+    const bgm = document.getElementById('bgm');
+    const musicToggle = document.getElementById('musicToggle');
+    const modal = document.getElementById('modal');
+    const preview = document.getElementById('preview');
+    const previewImg = document.getElementById('previewImg');
+
+    // ====== LETS GO -> start music + reveal app ======
+    document.getElementById('letsGo').addEventListener('click', function () {
+      bgm.play().catch(function () { }); // start music (loop)
+      intro.classList.add('hide');
+      setTimeout(function () {
+        intro.style.display = 'none';
+        app.classList.add('show');
+      }, 700);
+    });
+
+    // ====== MUSIC TOGGLE ======
+    musicToggle.addEventListener('click', function () {
+      if (bgm.paused) {
+        bgm.play().catch(function () { });
+        musicToggle.innerHTML = '&#9835; Music On';
+      } else {
+        bgm.pause();
+        musicToggle.innerHTML = '&#9835; Music Off';
+      }
+    });
+
+    // ====== OPEN LETTER ======
+    document.querySelectorAll('.env-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        const data = letters[card.getAttribute('data-letter')];
+        document.getElementById('diaryNum').textContent = data.num;
+        document.getElementById('diaryTitle').textContent = data.title;
+        let html = '';
+        data.rows.forEach(function (r, i) {
+          const n = String(i + 1).padStart(2, '0') + '.';
+          html += '<div class="row"><span class="n">' + n + '</span><span>' + r + '</span></div>';
+        });
+        html += '<div class="dots">&bull; &bull; &bull; &bull;</div>';
+        
+        html += '<div class="wax">&hearts;</div>';
+        document.getElementById('diaryScroll').innerHTML = html;
+        modal.classList.add('open');
+      });
+    });
+
+    // ====== CLOSE LETTER (music keeps playing) ======
+    function closeModal() { modal.classList.remove('open'); }
+    document.getElementById('backBtn').addEventListener('click', closeModal);
+    document.getElementById('closeLetter').addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+
+    // ====== PREVIEW (top polaroid images) ======
+    document.querySelectorAll('[data-preview]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        previewImg.src = el.getAttribute('data-preview');
+        preview.classList.add('open');
+      });
+    });
+    function closePreview() { preview.classList.remove('open'); }
+    document.getElementById('previewClose').addEventListener('click', closePreview);
+    preview.addEventListener('click', function (e) { if (e.target === preview) closePreview(); });
+      // Flowers Animation
+        for(let i=0; i<12; i++) {
+            let p = document.createElement('div'); p.className = 'petal'; p.innerHTML = '🌸';
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.animationDuration = (Math.random() * 15 + 15) + 's';
+            p.style.animationDelay = Math.random() * 10 + 's';
+            document.body.appendChild(p);
+        }
+
+  </script>
+</body>
+
+</html>
